@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_helloworld/pages/matic_pages.dart';
 import 'package:flutter_helloworld/pages/product_detail.dart';
 import 'package:flutter_helloworld/pages/maxi_pages.dart';
+import 'package:flutter_helloworld/pages/sport_pages.dart';
+import 'package:flutter_helloworld/pages/classy_pages.dart';
+import 'package:flutter_helloworld/pages/moped_pages.dart';
 
 class Product {
   String _title;
@@ -41,10 +44,18 @@ List<Product> products = [
     "Sport",
     "assets/sport.png",
     "Kategori motor Sport Yamaha",
-    DetailPage(
-      title: "Sport",
-      imagePath: "assets/sport.png",
-      description: "Kategori motor Sport Yamaha",
-    ),
+    const SportPage(),
+  ),
+  Product(
+    "Classy",
+    "assets/classy.png",
+    "Kategori motor Classy Yamaha",
+    const ClassyPage(),
+  ),
+  Product(
+    "Moped",
+    "assets/moped.png",
+    "Kategori motor Moped Yamaha",
+    const MopedPage(),
   ),
 ];

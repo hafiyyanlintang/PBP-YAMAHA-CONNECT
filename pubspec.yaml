@@ -30,10 +30,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.19.0
+  getwidget: ^2.1.1
+  carousel_slider: ^4.0.0
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +75,23 @@ flutter:
     - assets/nmax.png
     - assets/xmax.png
     - assets/aerox.png
+    - assets/slider1.jpg
+    - assets/slider2.jpg
+    - assets/slider3.jpg
+    - assets/moped.png
+    - assets/fazzio.png
+    - assets/fino.png
+    - assets/grandfilano.png
+    - assets/jupiterz1.png
+    - assets/mio.png
+    - assets/mxking150.png
+    - assets/mt15.png
+    - assets/mt25.png
+    - assets/r15.png
+    - assets/r25.png
+    - assets/vegaforce.png
+    - assets/vixion155.png
+    - assets/xsr155.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -100,3 +123,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+dependency_overrides:
+  carousel_slider:
+    git:
+      url: https://github.com/serenader2014/flutter_carousel_slider.git
+      ref: master
