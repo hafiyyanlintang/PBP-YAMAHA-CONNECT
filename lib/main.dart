@@ -10,6 +10,13 @@ void main() {
   runApp(const MyApp());
 }
 
+class PageArguments {
+  final String email;
+  final bool darkMode;
+
+  PageArguments({required this.email, required this.darkMode});
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -22,23 +29,76 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 0, 140, 255),
         ),
+        useMaterial3: true,
       ),
+      initialRoute: '/',
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(builder: (_) => const SplashPage());
 
-      // 🔹 Daftar semua route di sini
-      routes: {
-        '/home': (context) => const HomePage(
-          email: "user@email.com",
-        ), // nanti bisa diganti dari login
-        '/products': (context) => const ProductPage(),
-        '/dealers': (context) => const DealerPage(),
-        '/services': (context) => const ServicePage(),
-        '/parts': (context) => const PartsPage(),
+          case '/home':
+            return MaterialPageRoute(
+              builder: (_) => const HomePage(email: "user@email.com"),
+            );
+
+          case '/products':
+            if (settings.arguments is PageArguments) {
+              final args = settings.arguments as PageArguments;
+              return MaterialPageRoute(
+                builder: (_) =>
+                    ProductPage(email: args.email, darkMode: args.darkMode),
+              );
+            }
+            return _errorRoute(settings.name);
+
+          case '/dealers':
+            if (settings.arguments is PageArguments) {
+              final args = settings.arguments as PageArguments;
+              return MaterialPageRoute(
+                builder: (_) =>
+                    DealerPage(email: args.email, darkMode: args.darkMode),
+              );
+            }
+            return _errorRoute(settings.name);
+
+          case '/services':
+            if (settings.arguments is PageArguments) {
+              final args = settings.arguments as PageArguments;
+              return MaterialPageRoute(
+                builder: (_) =>
+                    ServicePage(email: args.email, darkMode: args.darkMode),
+              );
+            }
+            return _errorRoute(settings.name);
+
+          case '/parts':
+            if (settings.arguments is PageArguments) {
+              final args = settings.arguments as PageArguments;
+              return MaterialPageRoute(
+                builder: (_) =>
+                    PartPage(email: args.email, darkMode: args.darkMode),
+              );
+            }
+            return _errorRoute(settings.name);
+
+          default:
+            return _errorRoute(settings.name);
+        }
       },
+    );
+  }
 
-      // 🔹 Tetap mulai dari Splash
-      home: const SplashPage(),
+  // Fungsi helper untuk rute error agar tidak duplikat kode
+  static Route<dynamic> _errorRoute(String? routeName) {
+    return MaterialPageRoute(
+      builder: (_) => Scaffold(
+        body: Center(
+          child: Text(
+            'Rute tidak ditemukan atau argumen salah untuk: $routeName',
+          ),
+        ),
+      ),
     );
   }
 }
-
-// by hafiyyan lintang arizaki 24111814048

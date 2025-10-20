@@ -1,30 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_helloworld/pages/matic_pages.dart';
-import 'package:flutter_helloworld/pages/product_detail.dart';
-import 'package:flutter_helloworld/pages/maxi_pages.dart';
-import 'package:flutter_helloworld/pages/sport_pages.dart';
-import 'package:flutter_helloworld/pages/classy_pages.dart';
-import 'package:flutter_helloworld/pages/moped_pages.dart';
-
 class Product {
-  String _title;
-  String _imagePath;
-  String _description;
-  Widget _page;
+  String title;
+  String imagePath;
+  String description;
 
-  Product(this._title, this._imagePath, this._description, this._page);
-
-  // Getter
-  String get title => _title;
-  String get imagePath => _imagePath;
-  String get description => _description;
-  Widget get page => _page;
-
-  // Setter
-  set title(String value) => _title = value;
-  set imagePath(String value) => _imagePath = value;
-  set description(String value) => _description = value;
-  set page(Widget value) => _page = value;
+  Product(this.title, this.imagePath, this.description);
 }
 
 List<Product> products = [
@@ -32,30 +11,25 @@ List<Product> products = [
     "MAXI",
     "assets/maxi.png",
     "Kategori motor MAXI Yamaha",
-    const MaxiPage(),
   ),
   Product(
     "Matic",
     "assets/matic.png",
     "Kategori motor Matic Yamaha",
-    const MaticPage(),
   ),
   Product(
     "Sport",
     "assets/sport.png",
     "Kategori motor Sport Yamaha",
-    const SportPage(),
   ),
   Product(
     "Classy",
     "assets/classy.png",
     "Kategori motor Classy Yamaha",
-    const ClassyPage(),
   ),
   Product(
     "Moped",
     "assets/moped.png",
     "Kategori motor Moped Yamaha",
-    const MopedPage(),
   ),
 ];
