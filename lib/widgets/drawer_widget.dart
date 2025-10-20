@@ -2,17 +2,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-// Impor yang dibutuhkan untuk PageArguments
 import 'package:flutter_helloworld/main.dart'; 
 
-// ✨ DIUBAH: Kita butuh AppColors di sini
 class AppColors {
   static const Color primaryDark = Color(0xFF0B3A66);
   static const Color accentDark = Color(0xFF4EA0FF);
 }
 
 class AppDrawer extends StatelessWidget {
-  // Drawer sekarang butuh email & status darkMode
   final String email;
   final bool darkMode;
 
@@ -24,7 +21,6 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Menentukan rute yang sedang aktif
     final currentRoute = ModalRoute.of(context)?.settings.name;
 
     return Drawer(
@@ -51,10 +47,8 @@ class AppDrawer extends StatelessWidget {
                     currentRoute: currentRoute,
                     onTap: () {
                       if (currentRoute != '/home') {
-                        // Kembali ke home dan hapus semua halaman di atasnya
                         Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                       } else {
-                        // Jika sudah di home, cukup tutup drawer
                         Navigator.pop(context);
                       }
                     },
@@ -66,8 +60,6 @@ class AppDrawer extends StatelessWidget {
                     routeName: '/products',
                     currentRoute: currentRoute,
                     onTap: () {
-                      // ✅ PERBAIKAN LOGIKA NAVIGASI
-                      // Hapus semua halaman, kembali ke Home, lalu buka halaman Products
                       Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                       Navigator.pushNamed(context, '/products', arguments: PageArguments(email: email, darkMode: darkMode));
                     },
@@ -79,7 +71,6 @@ class AppDrawer extends StatelessWidget {
                     routeName: '/services',
                     currentRoute: currentRoute,
                     onTap: () {
-                      // ✅ PERBAIKAN LOGIKA NAVIGASI
                       Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                       Navigator.pushNamed(context, '/services', arguments: PageArguments(email: email, darkMode: darkMode));
                     },
@@ -91,7 +82,6 @@ class AppDrawer extends StatelessWidget {
                     routeName: '/dealers',
                     currentRoute: currentRoute,
                     onTap: () {
-                      // ✅ PERBAIKAN LOGIKA NAVIGASI
                       Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                       Navigator.pushNamed(context, '/dealers', arguments: PageArguments(email: email, darkMode: darkMode));
                     },
@@ -103,7 +93,6 @@ class AppDrawer extends StatelessWidget {
                     routeName: '/parts',
                     currentRoute: currentRoute,
                     onTap: () {
-                      // ✅ PERBAIKAN LOGIKA NAVIGASI
                       Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                       Navigator.pushNamed(context, '/parts', arguments: PageArguments(email: email, darkMode: darkMode));
                     },

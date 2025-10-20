@@ -89,7 +89,6 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  // Fungsi helper untuk rute error agar tidak duplikat kode
   static Route<dynamic> _errorRoute(String? routeName) {
     return MaterialPageRoute(
       builder: (_) => Scaffold(
